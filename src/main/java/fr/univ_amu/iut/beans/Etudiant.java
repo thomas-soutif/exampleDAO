@@ -1,6 +1,8 @@
 package fr.univ_amu.iut.beans;
 
-public class Etudiant {
+import java.io.Serializable;
+import java.lang.Object;
+public class Etudiant extends Object{
 	private int numEt;
 	private String nomEt;
 	private String prenomEt;
@@ -10,8 +12,8 @@ public class Etudiant {
 	private int annee;
 	private int groupe;
 
-	public Etudiant() {
-	}
+
+
 	
 	public Etudiant(int numEt, String nomEt, String prenomEt, String cpEt,
 			String villeEt, int annee, int groupe) {
@@ -80,7 +82,38 @@ public class Etudiant {
 		this.villeEt = villeEt;
 	}
 
-	@Override
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Etudiant)) return false;
+
+        Etudiant etudiant = (Etudiant) o;
+
+        if (numEt != etudiant.numEt) return false;
+        if (annee != etudiant.annee) return false;
+        if (groupe != etudiant.groupe) return false;
+        if (nomEt != null ? !nomEt.equals(etudiant.nomEt) : etudiant.nomEt != null) return false;
+        if (prenomEt != null ? !prenomEt.equals(etudiant.prenomEt) : etudiant.prenomEt != null) return false;
+        if (cpEt != null ? !cpEt.equals(etudiant.cpEt) : etudiant.cpEt != null) return false;
+        return villeEt != null ? villeEt.equals(etudiant.villeEt) : etudiant.villeEt == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = numEt;
+        result = 31 * result + (nomEt != null ? nomEt.hashCode() : 0);
+        result = 31 * result + (prenomEt != null ? prenomEt.hashCode() : 0);
+        result = 31 * result + (cpEt != null ? cpEt.hashCode() : 0);
+        result = 31 * result + (villeEt != null ? villeEt.hashCode() : 0);
+        result = 31 * result + annee;
+        result = 31 * result + groupe;
+        return result;
+    }
+
+
+
+
+    @Override
 	public String toString() {
 		return "Etudiant [numEt=" + numEt + ", "
 				+ (nomEt != null ? "nomEt=" + nomEt + ", " : "")
