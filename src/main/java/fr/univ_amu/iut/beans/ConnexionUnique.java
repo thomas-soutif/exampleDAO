@@ -7,18 +7,19 @@ import java.sql.SQLException;
 public class ConnexionUnique
 {
     private Connection connection;
-    private ConnexionUnique instance;
+    private  static ConnexionUnique instance = null;
     private String connect_url;
     private String login;
     private String password;
 
-    public ConnexionUnique()
+    protected ConnexionUnique()
     {
         connect_url = "jdbc:mysql://localhost:3306/gestion_peda";
         login = "lambda";
         password = "1234";
-        try ( Connection connection = DriverManager.getConnection(connect_url, login, password))
+        try
         {
+            connection = DriverManager.getConnection(connect_url, login, password);
             System.out.println("Connecté.");
 
         }
@@ -36,9 +37,12 @@ public class ConnexionUnique
         return connection;
     }
 
-    public ConnexionUnique getInstance()
+    public static ConnexionUnique getInstance()
     {
-        instance = new ConnexionUnique();
+
+        if(instance == null)
+            instance = new ConnexionUnique();
+
         return instance;
     }
 
