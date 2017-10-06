@@ -2,7 +2,7 @@ package fr.univ_amu.iut.beans;
 
 import java.io.Serializable;
 import java.lang.Object;
-public class Etudiant extends Object{
+public class Etudiant {
 	private int numEt;
 	private String nomEt;
 	private String prenomEt;
