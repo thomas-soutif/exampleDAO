@@ -2,6 +2,9 @@ package fr.univ_amu.iut.beans;
 
 import java.io.Serializable;
 import java.lang.Object;
+import java.util.Map;
+import java.util.Set;
+
 public class Etudiant {
 	private int numEt;
 	private String nomEt;
@@ -14,7 +17,6 @@ public class Etudiant {
 
 
 
-	
 	public Etudiant() {
 		this.numEt = numEt;
 		this.nomEt = nomEt;
@@ -80,6 +82,7 @@ public class Etudiant {
 	public void setVilleEt(String villeEt) {
 		this.villeEt = villeEt;
 	}
+
 
     @Override
     public boolean equals(Object o) {

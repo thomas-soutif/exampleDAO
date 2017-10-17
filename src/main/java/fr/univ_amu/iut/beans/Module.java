@@ -2,6 +2,8 @@ package fr.univ_amu.iut.beans;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 
 public class Module extends Object{
 	private String code;
@@ -16,6 +18,7 @@ public class Module extends Object{
 	private Prof responsable;
 	private Module pere;
 	private Collection<Prof> specialistes;
+
 	
 	public Module() {
 	}
@@ -111,6 +114,7 @@ public class Module extends Object{
 	public Collection<Prof> getSpecialistes() {
 		return specialistes;
 	}
+
 
 
     @Override

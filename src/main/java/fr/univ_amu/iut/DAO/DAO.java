@@ -1,9 +1,13 @@
 package fr.univ_amu.iut.DAO;
 
+import fr.univ_amu.iut.beans.ConnexionUnique;
+
+import java.sql.Connection;
 import java.util.List;
 
 public interface DAO<T> {
 
+    public Connection conn = ConnexionUnique.getInstance().getConnection();
     /**
      * Permet la suppression d'un tuple de la base
      *
