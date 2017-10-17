@@ -8,9 +8,9 @@ public class ConnexionUnique
 {
     private Connection connection;
     private  static ConnexionUnique instance = null;
-    private String connect_url;
-    private String login;
-    private String password;
+    private static String connect_url;
+    private static String login;
+    private static String password;
 
     protected ConnexionUnique()
     {

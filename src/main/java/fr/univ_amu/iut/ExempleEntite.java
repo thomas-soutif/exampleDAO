@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class TestEntite {
+public class ExempleEntite {
 
 
 
@@ -24,13 +25,23 @@ public class TestEntite {
 
             while (rset.next()){
 
-                Etudiant etudiant = new Etudiant(rset.getInt("NUM_ET"),rset.getString("NOM_ET"),rset.getString("PRENOM_ET"),rset.getString("CP_ET"),rset.getString("VILLE_ET"),rset.getInt("ANNEE"),rset.getInt("GROUPE"));
+                Etudiant etudiant = new Etudiant();
+                etudiant.setNumEt(rset.getInt("NUM_ET"));
+                etudiant.setNomEt(rset.getString("NOM_ET"));
+                etudiant.setPrenomEt(rset.getString("PRENOM_ET"));
+                etudiant.setCpEt(rset.getString("CP_ET"));
+                etudiant.setVilleEt(rset.getString("VILLE_ET"));
+                etudiant.setAnnee(rset.getInt("ANNEE"));
+                etudiant.setGroupe(rset.getInt("GROUPE"));
+
+
                 liste.add(etudiant);
 
             }
 
             for(int i = 0; i < liste.size(); i++)
                 System.out.println(liste.get(i).toString());
+
 
         }
         catch (SQLException e)

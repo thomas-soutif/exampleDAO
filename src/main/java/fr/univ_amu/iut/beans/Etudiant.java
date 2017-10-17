@@ -15,8 +15,7 @@ public class Etudiant {
 
 
 	
-	public Etudiant(int numEt, String nomEt, String prenomEt, String cpEt,
-			String villeEt, int annee, int groupe) {
+	public Etudiant() {
 		this.numEt = numEt;
 		this.nomEt = nomEt;
 		this.prenomEt = prenomEt;
