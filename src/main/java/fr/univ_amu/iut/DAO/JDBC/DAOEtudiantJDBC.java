@@ -2,13 +2,19 @@ package fr.univ_amu.iut.DAO.JDBC;
 
 import fr.univ_amu.iut.DAO.DAOEtudiant;
 import fr.univ_amu.iut.beans.Etudiant;
-
+import java.util.stream.Collectors;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import fr.univ_amu.iut.JDBC.ResultSetStreamer;
+import fr.univ_amu.iut.JDBC.RowMappers.EtudiantMapper;
 
 public class DAOEtudiantJDBC implements DAOEtudiant{
+
+    DAOEtudiantJDBC() {
+    }
+
     @Override
     public int computeNbEtudiant() {
         return 0;
@@ -35,8 +41,8 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
     }
 
     @Override
-    public List<Etudiant> FindAll() {
-        return null;
+    public List<Etudiant> findAll() {
+        return ResultSetStreamer.stream(conn, "SELECT * FROM ETUDIANT", new EtudiantMapper()).collect(Collectors.toList());
     }
 
     @Override
@@ -85,6 +91,7 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
             System.out.println("Erreur main");
             System.out.println(e.getMessage() + "\n");
         }
+        obj = getById(obj.getNumEt());
         return obj;
 
 
@@ -92,6 +99,11 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
 
     @Override
     public boolean update(Etudiant obj) {
+
+
+        //Statement etat = conn.createStatement();
         return false;
+
+
     }
 }

@@ -20,7 +20,7 @@ public interface DAO<T> {
      *
      * @return
      */
-    List<T> FindAll();
+    List<T> findAll();
 
     /**
      * Permet de récupérer un objet via son ID
