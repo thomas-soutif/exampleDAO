@@ -1,6 +1,8 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.DAO.DAO;
+import fr.univ_amu.iut.DAO.DAOEtudiant;
+import fr.univ_amu.iut.DAO.JDBC.DAOEtudiantJDBC;
 import fr.univ_amu.iut.beans.ConnexionUnique;
 import fr.univ_amu.iut.beans.Etudiant;
 
@@ -15,17 +17,18 @@ public class ExempleDAOEtudiant {
 
     public static void main(String[] args) {
 
-        try {
-            Connection conn = ConnexionUnique.getInstance().getConnection();
-            Statement etat = conn.createStatement();
+        DAOEtudiant dao = new DAOEtudiantJDBC();
+        Etudiant e = new Etudiant();
+        e.setNomEt("SOUTIF");
+        e.setPrenomEt("THOMAS");
+        e.setCpEt("13100");
+        e.setVilleEt("Aix en Provence");
+        e.setAnnee(2);
+        e.setGroupe(3);
 
+        e = dao.insert(e);
 
-
-        } catch (SQLException e) {
-            System.out.println("Erreur main");
-            System.out.println(e.getMessage() + "\n");
-        }
-
+        System.out.println(e.toString());
 
     }
 
