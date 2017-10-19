@@ -6,7 +6,7 @@ import fr.univ_amu.iut.beans.ConnexionUnique;
 import java.sql.Connection;
 import java.util.List;
 
-public interface DAO<T> {
+public interface DAO<T,Id> {
 
     public Connection conn = ConnexionUnique.getInstance().getConnection();
     /**
@@ -29,7 +29,7 @@ public interface DAO<T> {
      * @param id
      * @return
      */
-    T getById(int id);
+    T getById(Id id);
 
     /**
      * Permet de créer une entrée dans la base de données par rapport à un objet

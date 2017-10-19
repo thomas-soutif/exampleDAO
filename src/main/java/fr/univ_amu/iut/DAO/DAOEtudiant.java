@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface DAOEtudiant extends DAO<Etudiant> {
+public interface DAOEtudiant extends DAO<Etudiant,Integer> {
 
 
 
