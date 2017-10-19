@@ -26,7 +26,7 @@ public class ExempleDAOEtudiant {
         e.setVilleEt("Paris");
         e.setGroupe(3);
         e.setAnnee(2);
-        e = dao.insert(e);
+        //e = dao.insert(e);
 
         System.out.println(e.toString());
 
@@ -46,6 +46,17 @@ public class ExempleDAOEtudiant {
 
         for(Etudiant et : l)
             System.out.println(et.toString());
+
+        l = dao.findByGroupe(2);
+
+        for(Etudiant et : l)
+            System.out.println(et.toString());
+
+
+        System.out.println(dao.computeNbEtudiant());
+
+
+
     }
 
 }
