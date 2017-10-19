@@ -19,23 +19,123 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
 
     @Override
     public int computeNbEtudiant() {
-        return 0;
+
+    try{
+        Statement etat = conn.createStatement();
+        ResultSet result = etat.executeQuery("SELECT count(NUM_ET) FROM ETUDIANT");
+        while(result.next())
+        {
+            return result.getInt("count(NUM_ET)");
+        }
+
+    }
+    catch (SQLException e)
+    {
+        System.out.println("Erreur sur computeEtudiant");
+    }
+
+    return 0;
+
+
     }
 
     @Override
     public List<Etudiant> findByAnnee(int annee) {
-        return null;
+
+        List<Etudiant> list = new ArrayList<>();
+
+        try {
+            Statement etat = conn.createStatement();
+            ResultSet result = etat.executeQuery("SELECT * FROM ETUDIANT WHERE ANNEE = " + annee);
+
+            while (result.next()) {
+                Etudiant et = new Etudiant();
+                et.setNumEt(result.getInt("NUM_ET"));
+                et.setNomEt(result.getString("NOM_ET"));
+                et.setPrenomEt(result.getString("PRENOM_ET"));
+                et.setCpEt(result.getString("CP_ET"));
+                et.setVilleEt(result.getString("VILLE_ET"));
+                et.setAnnee(result.getInt("ANNEE"));
+                et.setGroupe(result.getInt("GROUPE"));
+
+                list.add(et);
+            }
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Erreur sur DAOEtudiantJDBC / getByAnnee()");
+            System.out.println(e.getMessage() + "\n");
+        }
+        return list;
+
     }
 
     @Override
     public List<Etudiant> findByGroupe(int groupe) {
-        return null;
+
+        List<Etudiant> list = new ArrayList<>();
+
+        try {
+            Statement etat = conn.createStatement();
+            ResultSet result = etat.executeQuery("SELECT * FROM ETUDIANT WHERE GROUPE = " + groupe);
+
+            while (result.next()) {
+                Etudiant et = new Etudiant();
+                et.setNumEt(result.getInt("NUM_ET"));
+                et.setNomEt(result.getString("NOM_ET"));
+                et.setPrenomEt(result.getString("PRENOM_ET"));
+                et.setCpEt(result.getString("CP_ET"));
+                et.setVilleEt(result.getString("VILLE_ET"));
+                et.setAnnee(result.getInt("ANNEE"));
+                et.setGroupe(result.getInt("GROUPE"));
+
+                list.add(et);
+            }
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Erreur sur DAOEtudiantJDBC / findByGroupe()");
+            System.out.println(e.getMessage() + "\n");
+        }
+        return list;
+
+
     }
 
     @Override
     public List<Etudiant> findByNom(String nomEt) {
-        return null;
+
+        List<Etudiant> list = new ArrayList<>();
+
+        try {
+            Statement etat = conn.createStatement();
+            ResultSet result = etat.executeQuery("SELECT * FROM ETUDIANT WHERE NOM_ET = '" + nomEt + "'");
+
+            while (result.next()) {
+                Etudiant et = new Etudiant();
+                et.setNumEt(result.getInt("NUM_ET"));
+                et.setNomEt(result.getString("NOM_ET"));
+                et.setPrenomEt(result.getString("PRENOM_ET"));
+                et.setCpEt(result.getString("CP_ET"));
+                et.setVilleEt(result.getString("VILLE_ET"));
+                et.setAnnee(result.getInt("ANNEE"));
+                et.setGroupe(result.getInt("GROUPE"));
+
+                list.add(et);
+            }
+
+        }
+        catch (SQLException e)
+    {
+        System.out.println("Erreur sur DAOEtudiantJDBC / findByNom()");
+        System.out.println(e.getMessage() + "\n");
     }
+    return list;
+
+
+}
 
     @Override
     public boolean delete(Etudiant obj) {
@@ -91,7 +191,7 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
     }
 
     @Override
-    public Etudiant getById(int id) {
+    public Etudiant getById(Integer id) {
 
         Etudiant tmp = new Etudiant();
         try {
