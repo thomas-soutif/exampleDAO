@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExempleDAOEtudiant {
 
@@ -22,14 +23,29 @@ public class ExempleDAOEtudiant {
         e.setNomEt("SOUTIF");
         e.setPrenomEt("THOMAS");
         e.setCpEt("13100");
-        e.setVilleEt("Aix en Provence");
-        e.setAnnee(2);
+        e.setVilleEt("Paris");
         e.setGroupe(3);
-
+        e.setAnnee(2);
         e = dao.insert(e);
 
         System.out.println(e.toString());
 
+        e.setVilleEt("Aix en Provence");
+
+       boolean updateOk = dao.update(e);
+        if(!updateOk)
+        {
+            System.out.println("Mise à jour échoué.");
+        }
+
+       e = dao.getById(e.getNumEt());
+
+        System.out.println(e.toString());
+
+        List<Etudiant> l = dao.findAll();
+
+        for(Etudiant et : l)
+            System.out.println(et.toString());
     }
 
 }

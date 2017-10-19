@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.DAO;
 
+import fr.univ_amu.iut.beans.ConnexionNedjar;
 import fr.univ_amu.iut.beans.ConnexionUnique;
 
 import java.sql.Connection;

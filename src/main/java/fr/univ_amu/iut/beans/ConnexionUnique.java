@@ -15,17 +15,18 @@ public class ConnexionUnique
     protected ConnexionUnique()
     {
         connect_url = "jdbc:mysql://localhost:3306/gestion_peda";
-        login = "lambda";
-        password = "1234";
+        login = "root";
+        password = "root";
         try
         {
+            System.out.println("Connexion à " + connect_url );
             connection = DriverManager.getConnection(connect_url, login, password);
             System.out.println("Connecté.");
 
         }
         catch (SQLException e)
         {
-            e.printStackTrace();// Arggg!!!
+            System.out.println("Connexion impossible pour l'utilisateur "+ login + "sur la base de donnée " + connect_url + " Veuillez vérifier vos identifiants.");
             System.out.println(e.getMessage() + "\n");
 
         }

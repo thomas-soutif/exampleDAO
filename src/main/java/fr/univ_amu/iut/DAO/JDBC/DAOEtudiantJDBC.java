@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,6 +44,7 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
             Statement etat = conn.createStatement();
             int nb = etat.executeUpdate("DELETE FROM ETUDIANT WHERE NUM_ET = " + obj.getNumEt());
             ok = true;
+            System.out.println("L'étudiant + " + obj.getNomEt() + " " + obj.getPrenomEt() + " a bien était supprimé.");
 
 
         }
@@ -56,7 +58,36 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
 
     @Override
     public List<Etudiant> findAll() {
-        return null;
+
+        List<Etudiant> list = new ArrayList<>();
+        try
+        {
+            Statement etat = conn.createStatement();
+            ResultSet result = etat.executeQuery("SELECT * FROM ETUDIANT ORDER BY NUM_ET");
+
+            while(result.next())
+            {
+                Etudiant et = new Etudiant();
+                et.setNumEt(result.getInt("NUM_ET"));
+                et.setNomEt(result.getString("NOM_ET"));
+                et.setPrenomEt(result.getString("PRENOM_ET"));
+                et.setCpEt(result.getString("CP_ET"));
+                et.setVilleEt(result.getString("VILLE_ET"));
+                et.setAnnee(result.getInt("ANNEE"));
+                et.setGroupe(result.getInt("GROUPE"));
+                list.add(et);
+            }
+        }
+
+        catch (SQLException e)
+        {
+            System.out.println("Erreur sur DAOEtudiantJDBC / findAll()");
+            System.out.println(e.getMessage() + "\n");
+        }
+
+
+        return list;
+
     }
 
     @Override
@@ -136,7 +167,9 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
     public boolean update(Etudiant obj) {
         boolean ok = false;
         try {
-            PreparedStatement etat = conn.prepareStatement("UPDATE ETUDIANT SET NOM_ET = ?, PRENOM_ET = ?, CP_ET = ?, VILLE_ET = ?, ANNEE = ?,GROUPE = ?" + " WHERE NAME = ?");
+
+
+            PreparedStatement etat = conn.prepareStatement("UPDATE ETUDIANT SET NOM_ET = ?, PRENOM_ET = ?, CP_ET = ?, VILLE_ET = ?, ANNEE = ?,GROUPE = ? WHERE NUM_ET = ?");
 
 
             etat.setString(1, obj.getNomEt());
@@ -147,6 +180,8 @@ public class DAOEtudiantJDBC implements DAOEtudiant{
             etat.setInt(6, obj.getGroupe());
             etat.setInt(7, obj.getNumEt());
 
+            int nb  = etat.executeUpdate();
+            System.out.println(nb + " étudiant(s) modifié(s)");
             ok = true;
         }
         catch (SQLException e)
