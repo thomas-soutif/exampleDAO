@@ -1,11 +1,9 @@
 package fr.univ_amu.iut.beans;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
 
-public class Module extends Object{
+import java.util.Collection;
+
+public class Module {
 	private String code;
 	private String libelle;
 	private int hCoursPrev;
@@ -163,7 +161,7 @@ public class Module extends Object{
 				+ ", hTpPrev=" + hTpPrev + ", hTpRea=" + hTpRea + ", "
 				+ (discipline != null ? "discipline=" + discipline + ", " : "")
 				+ "coeffTest=" + coefTest + ", coefCc=" + coefCc + ", "
-				+ (responsable != null ? "responsable=" + responsable.getNomProf() + ", " : "")
+				+ (responsable != null ? "responsable=" + responsable.getNumProf() + ", " : "")
 				+ (pere != null ? "pere=" + pere.getCode() : "") + "]";
 	}
 }

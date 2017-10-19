@@ -15,8 +15,8 @@ public class ConnexionUnique
     protected ConnexionUnique()
     {
         connect_url = "jdbc:mysql://localhost:3306/gestion_peda";
-        login = "root";
-        password = "root";
+        login = "lambda";
+        password = "1234";
         try
         {
             System.out.println("Connexion à " + connect_url );

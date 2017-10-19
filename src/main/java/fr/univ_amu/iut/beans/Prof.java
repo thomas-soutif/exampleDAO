@@ -1,9 +1,9 @@
 package fr.univ_amu.iut.beans;
 
 
-import java.io.Serializable;
 
-public class Prof extends Object{
+
+public class Prof {
 	private int numProf;
 	private String nomProf;
 	private String prenomProf;

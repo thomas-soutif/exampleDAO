@@ -1,9 +1,8 @@
 package fr.univ_amu.iut.beans;
 
-import java.io.Serializable;
+
 import java.lang.Object;
-import java.util.Map;
-import java.util.Set;
+
 
 public class Etudiant {
 	private int numEt;
