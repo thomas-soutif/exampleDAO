@@ -16,7 +16,7 @@ public class ExempleAsso1 {
     public static void main(String[] args) {
 
         try {
-            Connection conn = ConnexionNedjar.getInstance().getConnection();
+            Connection conn = ConnexionUnique.getInstance().getConnection();
             Statement etat = conn.createStatement();
             ArrayList liste = new ArrayList();
             ResultSet rset = etat.executeQuery("SELECT * FROM PROF PR,MODULE MO " +

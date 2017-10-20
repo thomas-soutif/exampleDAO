@@ -14,4 +14,12 @@ public class Notation {
     public void setMoyTest(float moyTest) {
         this.moyTest = moyTest;
     }
+
+    @Override
+    public String toString() {
+        return "Notation{" +
+                "moyCC=" + moyCC +
+                ", moyTest=" + moyTest +
+                '}';
+    }
 }

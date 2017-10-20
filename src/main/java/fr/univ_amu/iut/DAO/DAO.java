@@ -1,7 +1,6 @@
 package fr.univ_amu.iut.DAO;
 
-import fr.univ_amu.iut.beans.ConnexionNedjar;
-import fr.univ_amu.iut.beans.ConnexionUnique;
+import fr.univ_amu.iut.beans.*;
 
 import java.sql.Connection;
 import java.util.List;
@@ -45,4 +44,6 @@ public interface DAO<T,Id> {
      * @param obj
      */
     boolean update(T obj);
+
+
 }
